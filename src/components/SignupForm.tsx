@@ -14,11 +14,18 @@ export default function SignupForm() {
     },
   })
 
+  const onSubmit = handleSubmit((data) => {
+    console.log(data)
+  })
+
   return (
-    <form className='flex flex-col gap-y-3 w-[80%] mx-auto'>
+    <form
+      className='flex flex-col gap-y-3 w-[80%] mx-auto'
+      onSubmit={onSubmit}
+    >
       <div>
         <label
-          htmlFor='input-group-1'
+          htmlFor='name'
           className='block mb-1 text-sm font-medium text-gray-900'
         >
           Nombre
@@ -35,10 +42,10 @@ export default function SignupForm() {
           </div>
           <input
             type='text'
-            id='input-group-1'
-            className='bg-gray-50 border border-gray-300 text-white text-sm rounded-lg  focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 outline-none'
+            id='name'
+            className=' text-white text-sm rounded-lg   block w-full ps-10 p-2.5  bg-gray-700 border-gray-600 placeholder-gray-400 outline-none'
             placeholder='Juan Perez'
-            {...register('email', { required: 'El nombre es requerido' })}
+            {...register('name', { required: 'El nombre es requerido' })}
           />
         </div>
         {errors.name && (
@@ -49,7 +56,7 @@ export default function SignupForm() {
       </div>
       <div>
         <label
-          htmlFor='input-group-1'
+          htmlFor='email'
           className='block mb-1 text-sm font-medium text-gray-900'
         >
           Email
@@ -57,7 +64,7 @@ export default function SignupForm() {
         <div className='relative '>
           <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none'>
             <svg
-              className='w-4 h-4 text-gray-500 dark:text-gray-400'
+              className='w-4 h-4  dark:text-gray-400'
               fill='currentColor'
               viewBox='0 0 20 16'
             >
@@ -67,8 +74,8 @@ export default function SignupForm() {
           </div>
           <input
             type='text'
-            id='input-group-1'
-            className=' border  text-white text-sm rounded-lg  focus:border-blue-500 block w-full ps-10 p-2.5 bg-gray-700 border-gray-600 dark:placeholder-gray-400 outline-none'
+            id='email'
+            className=' border  text-white text-sm rounded-lg   block w-full ps-10 p-2.5 bg-gray-700 border-gray-600 dark:placeholder-gray-400 outline-none'
             placeholder='usuario@dominio.com'
             {...register('email', { required: 'El email es requerido' })}
           />
@@ -89,14 +96,15 @@ export default function SignupForm() {
         <div className='flex'>
           <span className='inline-flex items-center pl-3 text-sm text-white rounded-e-0  rounded-s-md bg-gray-700   focus:border-blue-500'>
             <svg
+              className=' text-gray-400'
               width='24'
               height='24'
               viewBox='0 0 24 24'
-              stroke-width='2'
+              strokeWidth='2'
               stroke='currentColor'
               fill='none'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             >
               <path
                 stroke='none'
@@ -138,7 +146,7 @@ export default function SignupForm() {
       </div>
       <button
         type='submit'
-        className='py-2.5 px-5 me-2 mt-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200  hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
+        className='py-2.5 px-5  mt-2 text-sm font-medium  outline-none  rounded-full    focus:z-10  bg-gray-800 text-gray-400 dark:border-gray-600 hover:text-white hover:bg-gray-700'
       >
         Enviar
       </button>

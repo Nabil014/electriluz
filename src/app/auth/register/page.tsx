@@ -9,7 +9,7 @@ export default function RegisterPage() {
         <h1 className='text-2xl'>Registrarse</h1>
         <SignupForm />
         <div className='flex gap-x-6'>
-          <span>Ya tienes una cuenta</span>
+          <span>¿Ya tienes una cuenta?</span>
           <Link
             href='/auth/login'
             className='hover:underline'
