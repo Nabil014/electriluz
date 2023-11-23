@@ -13,8 +13,12 @@ export default function Navbar() {
         </div>
         <div>
           <ul className='flex flex-row gap-4'>
-            <li>Registrarse</li>
-            <li>Iniciar sesión</li>
+            <li>
+              <Link href='/auth/register'>Registrarse</Link>{' '}
+            </li>
+            <li>
+              <Link href='/auth/login'>Iniciar sesión</Link>{' '}
+            </li>
           </ul>
         </div>
       </header>
