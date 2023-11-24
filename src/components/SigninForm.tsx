@@ -1,7 +1,10 @@
 'use client'
 import { useForm } from 'react-hook-form'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function SigninForm() {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -13,8 +16,14 @@ export default function SigninForm() {
     },
   })
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
+  const onSubmit = handleSubmit(async (data) => {
+    const res = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    })
+    if (!res?.ok) return console.log(res)
+    router.push('/admin')
   })
   return (
     <form
