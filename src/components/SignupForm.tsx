@@ -1,5 +1,6 @@
 'use client'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 export default function SignupForm() {
   const {
@@ -14,8 +15,9 @@ export default function SignupForm() {
     },
   })
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
+  const onSubmit = handleSubmit(async (data) => {
+    const res = await axios.post('/api/auth/register', data)
+    console.log(res)
   })
 
   return (
