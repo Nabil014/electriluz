@@ -23,7 +23,7 @@ export default function SigninForm() {
       redirect: false,
     })
     if (!res?.ok) return console.log(res)
-    router.push('/admin')
+    router.push('/')
   })
   return (
     <form

@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: 'credentials',
       credentials: {
         email: {
           label: 'Email',

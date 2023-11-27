@@ -1,8 +1,11 @@
 'use client'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function SignupForm() {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -17,7 +20,18 @@ export default function SignupForm() {
 
   const onSubmit = handleSubmit(async (data) => {
     const res = await axios.post('/api/auth/register', data)
-    console.log(res)
+
+    const result = await signIn('credentials', {
+      email: res.data.email,
+      password: data.password,
+      redirect: false,
+    })
+
+    if (!result?.ok) {
+      console.log(result?.error)
+      return
+    }
+    router.push('/')
   })
 
   return (
